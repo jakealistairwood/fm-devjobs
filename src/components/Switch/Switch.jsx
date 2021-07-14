@@ -2,7 +2,7 @@ import styles from './Switch.module.scss'
 import SunIcon from '../../assets/images/desktop/icon-sun.svg'
 import MoonIcon from '../../assets/images/desktop/icon-moon.svg'
 
-const Switch = () => {
+const Switch = ({ isToggled, onToggle, toggleTheme }) => {
     return (
         <div className={styles.switch}>
             <img className={styles.sunIcon} src={SunIcon} alt="light-mode-icon" />
@@ -11,6 +11,11 @@ const Switch = () => {
                     type="checkbox"
                     id="themeToggle"
                     name="themeToggle"
+                    checked={isToggled}
+                    onChange={() => {
+                        onToggle()
+                        toggleTheme()
+                    }}
                 />
                 <span className={styles.toggleSlider}></span>
             </label>

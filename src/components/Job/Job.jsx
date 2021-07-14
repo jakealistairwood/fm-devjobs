@@ -1,9 +1,14 @@
 import styles from './Job.module.scss'
+import styled from 'styled-components'
+
+const StyledCard = styled.div`
+    background-color: ${props => props.theme.cardBg}
+`
 
 const Job = ({ job }) => {
 
     return (
-        <div className={styles.job}>
+        <StyledCard className={styles.job}>
             <div className={styles.logoContainer} style={{
             backgroundColor: job.logoBackground
         }}>
@@ -17,7 +22,7 @@ const Job = ({ job }) => {
                 </div>
                 <p className={styles.job__location}>{job.location}</p>
             </div>
-        </div>
+        </StyledCard>
     )
 }
 
