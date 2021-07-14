@@ -1,0 +1,10 @@
+@import './abstracts/variables';
+
+a, button, span {
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
