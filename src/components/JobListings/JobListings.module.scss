@@ -1,0 +1,8 @@
+@import '../../assets/styles/main';
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 4em;
+    column-gap: 2em;
+}

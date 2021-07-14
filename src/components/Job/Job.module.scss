@@ -1,0 +1,53 @@
+@import '../../assets/styles/main';
+
+.job {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    background-color: $white;
+    padding: 30px;
+    border-radius: 6px;
+    min-height: 228px;
+
+    .logoContainer {
+        position: absolute;
+        top: -25px;
+        left: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 50px;
+        width: 50px;
+        border-radius: 15px;
+    }
+
+    .job__content {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+
+        .job__postDate {
+            color: $darkGrey;
+            font-size: 1rem;
+            margin-top: 15px;
+        }
+
+        .job__description {
+            h3 {
+                font-size: 1.5rem;
+                margin-top: 7px;
+            }
+
+            .job__company {
+                color: $darkGrey;
+                font-size: 1rem;
+            }
+        }
+
+        .job__location {
+            color: $primaryViolet;
+            font-weight: 700;
+        }
+    }
+}

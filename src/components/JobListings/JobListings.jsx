@@ -1,9 +1,12 @@
 import styles from './JobListings.module.scss'
+import Job from '../Job';
 
-const JobListings = () => {
+const JobListings = ({ jobs }) => {
     return (
-        <div>
-            
+        <div className={styles.grid}>
+            {jobs.map(job => (
+                <Job job={job} key={job.id} />
+            ))}
         </div>
     )
 }

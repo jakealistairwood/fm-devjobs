@@ -1,0 +1,11 @@
+@import './assets/styles/main';
+
+* {
+    font-size: 16px;
+    transition: 0.3s ease-in-out;
+    font-family: $primaryFont;
+}
+
+body {
+    background-color: $lightGrey;
+}
