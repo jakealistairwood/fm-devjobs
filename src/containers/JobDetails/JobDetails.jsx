@@ -1,13 +1,25 @@
 import { useState, useEffect } from 'react'
 import styles from './JobDetails.module.scss'
 import styled from 'styled-components'
-import { concatenateToResponse } from 'workbox-streams'
 
 const StyledMain = styled.main`
     background-color: ${props => props.theme.cardBg}
 `
 
 const StyledHeader = styled.div`
+    background-color: ${props => props.theme.cardBg}
+`
+
+const StyledButton = styled.button`
+    background-color: ${props => props.theme.buttonBgColor};
+    color: ${props => props.theme.buttonTextColor};
+
+    &:hover {
+        background-color: ${props => props.theme.buttonHoverColor};
+    }
+`
+
+const StyledFooter = styled.footer`
     background-color: ${props => props.theme.cardBg}
 `
 
@@ -34,40 +46,57 @@ const JobDetails = (props) => {
                     }}>
                         <img src={logoPath} alt="" />
                     </div>
-                    <div className={styles.jobDetails__headerBody}>
+                    <div className={styles.jobDetails__headerContent}>
                         <div>
                             <h3>{job.company}</h3>
                             <p>{website}.com</p>
                         </div>
                         <a href={job.website}>
-                            <button className={styles.companyBtn}>Company Site</button>
+                            <StyledButton className={styles.secondaryBtn}>Company Site</StyledButton>
                         </a>
                     </div>
                 </StyledHeader>
                 <StyledMain className={styles.jobDetails__content}>
                     <section className={styles.jobDetails__contentHeader}>
                         <div>
-                            <p className={styles.jobDetails__jobType}>1w ago .</p>
-                            <h2></h2>
-                            <p className={styles.jobDetails__location}></p>
+                            <p className={styles.jobDetails__contract}>{job.postedAt} . {job.contract}</p>
+                            <h2>{job.position}</h2>
+                            <p className={styles.jobDetails__location}>{job.location}</p>
                         </div>
                         <button className={styles.primaryBtn}>Apply Now</button>
                     </section>
-                    <section className={styles.jobDetails__jobDescription}>
-                        <div></div>
+                    <section className={styles.jobDetails__description}>
+                        <p>{job.description}</p>
+                        <div className={styles.jobDetails__requirements}>
+                            <h4>Requirements</h4>
+                            <p>{job.requirements && job.requirements.content}</p>
+                            <ul>
+                                {job.requirements && job.requirements.items.map(item => (
+                                    <li>{item}</li>
+                                ))}
+                            </ul>
+                        </div>
+                        <div className={styles.jobDetails__role}>
+                            <h4>Who we're looking for</h4>
+                            <p>{job.role && job.role.content}</p>
+                            <ol>
+                                {job.role && job.role.items.map(item => (
+                                    <li>{item}</li>
+                                ))}
+                            </ol>
+                        </div>
                     </section>
                 </StyledMain>
-                {/* <HowToApply data={data} /> */}
             </div>
-            <footer className={styles.footer}>
+            <StyledFooter className={styles.footer}>
                 <div className={styles.footer__container}>
                     <div className={styles.footer__content}>
-                        <h3></h3>
-                        <p></p>
+                        <h3>{job.position}</h3>
+                        <p>{job.company}</p>
                     </div>
                     <button className={styles.primaryBtn}>Apply Now</button>
                 </div>
-            </footer>
+            </StyledFooter>
         </>
     )
 }

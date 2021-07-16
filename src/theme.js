@@ -6,6 +6,7 @@ export const lightMode = {
     cardBg: '#FFFFFF',
     h2: '#19202D',
     h3: '#19202D',
+    h4: '#19202D',
     input: '#FFFFFF',
     inputText: '#19202D',
     fullTimeLabel: '#19202D',
@@ -21,6 +22,7 @@ export const darkMode = {
     cardBg: '#19202D',
     h2: '#FFFFFF',
     h3: '#FFFFFF',
+    h4: '#FFFFFF',
     input: '#19202D',
     inputText: '#FFFFFF',
     fullTimeLabel: '#FFFFFF',
@@ -41,6 +43,10 @@ export const GlobalStyles = createGlobalStyle`
 
     h3 {
         color: ${props => props.theme.h3}
+    }
+
+    h4 {
+        color: ${props => props.theme.h4}
     }
 
     input[type="text"] {
