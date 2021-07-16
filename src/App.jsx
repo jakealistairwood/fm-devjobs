@@ -1,8 +1,10 @@
 import { useState } from 'react'
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Home from './containers/Home'
+import JobDetails from './containers/JobDetails'
 import './App.scss'
-import styled, { ThemeProvider } from 'styled-components'
+import { ThemeProvider } from 'styled-components'
 import { lightMode, darkMode, GlobalStyles } from './theme'
 
 const App = () => {
@@ -15,18 +17,27 @@ const App = () => {
   }
 
   return (
-    <ThemeProvider theme={theme === 'light' ? lightMode : darkMode }>
-      <GlobalStyles />
-      <div>
-          <Navbar 
-            isToggled={isToggled}
-            toggleTheme={toggleTheme}
-            onToggle={() => setIsToggled(!isToggled)} 
-          />
-          {/* Job Listings */}
-          <Home />
-      </div>
-    </ThemeProvider>
+    <Router>
+      <ThemeProvider theme={theme === 'light' ? lightMode : darkMode }>
+        <GlobalStyles />
+        <div>
+            <Navbar 
+              isToggled={isToggled}
+              toggleTheme={toggleTheme}
+              onToggle={() => setIsToggled(!isToggled)} 
+            />
+            {/* Job Listings */}
+            <Switch>
+              <Route exact path="/">
+                <Home />
+              </Route>
+              <Route exact path="/job-listings/:id" render={(props) => (
+                <JobDetails {...props} />
+              )} />
+            </Switch>
+        </div>
+      </ThemeProvider>
+    </Router>
   )
 }
 

@@ -1,1 +1,29 @@
 @import '../../assets/styles/main';
+
+.search {
+    position: absolute;
+    top: 16vh;
+    display: flex;
+    align-items: center;
+    width: 80%;
+    height: 80px;
+    border-radius: 6px;
+
+    .search__filterOne,
+    .search__filterTwo, 
+    .search__filterThree {
+        display: flex;
+        align-items: center;
+        padding: 20px;
+
+        input[type="text"] {
+            border: none;
+            outline: none;
+            padding-left: 20px;
+        }
+    }
+
+    .search__filterOne {
+        flex: 0.4;
+    }
+}

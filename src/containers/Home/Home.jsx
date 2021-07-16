@@ -1,24 +1,18 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import styles from './Home.module.scss'
 import JobListings from '../../components/JobListings'
-import axios from 'axios'
+import Searchbar from '../../components/Searchbar'
+import DataContext from '../../context/dataContext'
 
 const Home = () => {
 
-    const [ jobs, setJobs ] = useState([])
-
-    useEffect(() => {
-        const fetchJobs = async () => {
-            const request = await axios.get('/data/data.json')
-            setJobs(request.data)
-        }
-        fetchJobs()
-    }, []);
+    const { jobs, loading } = useContext(DataContext)
 
     return (
         <main className={styles.home}>
             <div className={styles.container}>
-                <JobListings jobs={jobs} />
+                <Searchbar />
+                {loading ? <h2>Please wait while we load the latest job listings.</h2> : <JobListings jobs={jobs} />}
             </div>
         </main>
     )
